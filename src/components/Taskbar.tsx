@@ -1,0 +1,97 @@
+import React, { useState, useEffect } from 'react';
+import StartMenu from './StartMenu';
+import './Taskbar.css';
+
+interface WindowState {
+  isMinimized: boolean;
+  isMaximized: boolean;
+}
+
+interface TaskbarProps {
+  showStartMenu: boolean;
+  setShowStartMenu: (show: boolean) => void;
+  openApp: (appName: string) => void;
+  openApps: string[];
+  windowStates: Record<string, WindowState>;
+}
+
+const Taskbar: React.FC<TaskbarProps> = ({ 
+  showStartMenu, 
+  setShowStartMenu, 
+  openApp, 
+  openApps,
+  windowStates
+}) => {
+  const [currentTime, setCurrentTime] = useState(new Date());
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentTime(new Date());
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
+
+  const formatTime = (date: Date) => {
+    return date.toLocaleTimeString([], { 
+      hour: '2-digit', 
+      minute: '2-digit',
+      hour12: true 
+    });
+  };
+
+  const formatDate = (date: Date) => {
+    return date.toLocaleDateString([], {
+      month: 'numeric',
+      day: 'numeric',
+      year: 'numeric'
+    });
+  };
+
+  const toggleStartMenu = () => {
+    setShowStartMenu(!showStartMenu);
+  };
+
+  return (
+    <div className="taskbar">
+      <div className="taskbar-left">
+        <button className="start-button" onClick={toggleStartMenu}>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M3 3h8v8H3V3zm10 0h8v8h-8V3zM3 13h8v8H3v-8zm10 0h8v8h-8v-8z"/>
+          </svg>
+        </button>
+        
+        <div className="taskbar-apps">
+          {openApps.map(app => (
+            <div 
+              key={app} 
+              className={`taskbar-app ${windowStates[app]?.isMinimized ? 'minimized' : ''}`}
+              onClick={() => openApp(app)}
+              title={app}
+            >
+              {app}
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="taskbar-right">
+        <div className="system-tray">
+          <div className="clock">
+            <div className="time">{formatTime(currentTime)}</div>
+            <div className="date">{formatDate(currentTime)}</div>
+          </div>
+        </div>
+      </div>
+
+      {showStartMenu && (
+        <StartMenu 
+          openApp={openApp}
+          onClose={() => setShowStartMenu(false)}
+        />
+      )}
+    </div>
+  );
+};
+
+export default Taskbar;
