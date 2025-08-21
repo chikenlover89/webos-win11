@@ -5,7 +5,7 @@ import Desktop from './components/Desktop';
 import Taskbar from './components/Taskbar';
 import './App.css';
 
-const defaultBackground = 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&h=1080&fit=crop';
+const defaultBackground = 'https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=1920&h=1080&fit=crop';
 
 interface WindowState {
   isMinimized: boolean;

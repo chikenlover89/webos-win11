@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import WindowFrame from './WindowFrame';
+import BackIcon from './Icons/BackIcon';
+import FolderIcon from './Icons/FolderIcon';
+import FileIcon from './Icons/FileIcon';
 import './FileExplorer.css';
 
 interface FileExplorerProps {
@@ -87,9 +90,7 @@ const FileExplorer: React.FC<FileExplorerProps> = ({ onClose, onMinimize, onMaxi
       <div className="file-explorer">
         <div className="explorer-toolbar">
           <button className="nav-button" onClick={navigateUp}>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
-            </svg>
+            <BackIcon size={16} />
           </button>
           <div className="address-bar">
             <input 
@@ -118,13 +119,9 @@ const FileExplorer: React.FC<FileExplorerProps> = ({ onClose, onMinimize, onMaxi
                 <div className="file-info name">
                   <div className="file-icon">
                     {file.type === 'folder' ? (
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="#FFD700">
-                        <path d="M10 4H4c-1.11 0-2 .89-2 2v12c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2h-8l-2-2z"/>
-                      </svg>
+                      <FolderIcon size={16} />
                     ) : (
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="#0078d4">
-                        <path d="M13 9V4H6v16h12V9h-5zM8 6h3v2H8V6zm0 4h8v2H8v-2zm0 4h8v2H8v-2z"/>
-                      </svg>
+                      <FileIcon size={16} />
                     )}
                   </div>
                   <span>{file.name}</span>

@@ -1,4 +1,10 @@
 import React, { useState } from 'react';
+
+import MaximizeIcon from './Icons/MaximizeIcon';
+import RestoreIcon from './Icons/RestoreIcon';
+import MinimizeIcon from './Icons/MinimizeIcon';
+import CloseIcon from './Icons/CloseIcon';
+
 import './WindowFrame.css';
 
 interface WindowFrameProps {
@@ -77,16 +83,18 @@ const WindowFrame: React.FC<WindowFrameProps> = ({
             onClick={onMinimize}
             title="Minimize"
           >
-            −
+            <MinimizeIcon size={12} />
           </button>
           <button 
             className="window-control maximize" 
             onClick={onMaximize}
             title={isMaximized ? "Restore" : "Maximize"}
           >
-            {isMaximized ? '⧉' : '□'}
+            {isMaximized ? <RestoreIcon size={12} /> : <MaximizeIcon size={12} />}
           </button>
-          <button className="window-control close" onClick={onClose} title="Close">×</button>
+          <button className="window-control close" onClick={onClose} title="Close">
+            <CloseIcon size={12} />
+          </button>
         </div>
       </div>
       <div className="window-content">

@@ -1,4 +1,9 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
+
+import FileExplorerIcon from './Icons/FileExplorerIcon';
+import CalculatorIcon from './Icons/CalculatorIcon';
+import BackgroundIcon from './Icons/BackgroundIcon';
+
 import './StartMenu.css';
 
 interface StartMenuProps {
@@ -68,17 +73,9 @@ const StartMenu: React.FC<StartMenuProps> = ({ openApp, onClose }) => {
               onClick={() => handleAppClick(app)}
             >
               <div className="app-icon">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                  {app.name === 'File Explorer' && (
-                    <path d="M10 4H4c-1.11 0-2 .89-2 2v12c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2h-8l-2-2z"/>
-                  )}
-                  {app.name === 'Calculator' && (
-                    <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-2h2v2zm4 0h-2v-2h2v2zm4 0h-2v-2h2v2zm-8-4H7v-2h2v2zm4 0h-2v-2h2v2zm4 0h-2v-2h2v2zm-8-4H7V7h2v2zm4 0h-2V7h2v2zm4 0h-2V7h2v2z"/>
-                  )}
-                  {app.name === 'Background' && (
-                    <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/>
-                  )}
-                </svg>
+                {app.name === 'File Explorer' && <FileExplorerIcon size={24} />}
+                {app.name === 'Calculator' && <CalculatorIcon size={24} />}
+                {app.name === 'Background' && <BackgroundIcon size={24} />}
               </div>
               <span className="app-name">{app.name}</span>
             </button>

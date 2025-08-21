@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import StartMenu from './StartMenu';
+import WindowsIcon from './Icons/WindowsIcon';
 import './Taskbar.css';
 
 interface WindowState {
@@ -56,9 +57,7 @@ const Taskbar: React.FC<TaskbarProps> = ({
     <div className="taskbar">
       <div className="taskbar-left">
         <button className="start-button" onClick={toggleStartMenu}>
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M3 3h8v8H3V3zm10 0h8v8h-8V3zM3 13h8v8H3v-8zm10 0h8v8h-8v-8z"/>
-          </svg>
+          <WindowsIcon size={20} />
         </button>
         
         <div className="taskbar-apps">

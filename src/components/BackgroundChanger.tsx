@@ -23,10 +23,6 @@ const BackgroundChanger: React.FC<BackgroundChangerProps> = ({
 
   const presetBackgrounds = [
     {
-      name: 'Windows 11 Default',
-      url: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&h=1080&fit=crop'
-    },
-    {
       name: 'Mountain Landscape',
       url: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&h=1080&fit=crop'
     },
