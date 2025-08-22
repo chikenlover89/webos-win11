@@ -1,8 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 
-import FileExplorerIcon from './Icons/FileExplorerIcon';
-import CalculatorIcon from './Icons/CalculatorIcon';
-import BackgroundIcon from './Icons/BackgroundIcon';
+import { FileExplorerIcon, CalculatorIcon, BackgroundIcon } from './Icons';
 
 import './StartMenu.css';
 

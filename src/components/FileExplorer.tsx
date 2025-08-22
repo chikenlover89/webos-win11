@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
+
+import { BackIcon, FolderIcon, FileIcon } from './Icons';
+
 import WindowFrame from './WindowFrame';
-import BackIcon from './Icons/BackIcon';
-import FolderIcon from './Icons/FolderIcon';
-import FileIcon from './Icons/FileIcon';
+
 import './FileExplorer.css';
 
 interface FileExplorerProps {

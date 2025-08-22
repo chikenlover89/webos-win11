@@ -1,14 +1,9 @@
 import React from 'react';
 import { useDrag, useDrop } from 'react-dnd';
 
-import FileExplorerIcon from './Icons/FileExplorerIcon';
-import CalculatorIcon from './Icons/CalculatorIcon';
-import TrashIcon from './Icons/TrashIcon';
-import SettingsIcon from './Icons/SettingsIcon';
+import { CalculatorIcon, TrashIcon, SettingsIcon, BackgroundIcon, FancyFolderIcon } from './Icons';
 
 import './DesktopIcon.css';
-import BackgroundIcon from './Icons/BackgroundIcon';
-import FancyFolderIcon from './Icons/FancyFolderIcon';
 
 interface DesktopIconProps {
   id: string;

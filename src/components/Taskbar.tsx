@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
+
+import { WindowsIcon } from './Icons';
+
 import StartMenu from './StartMenu';
-import WindowsIcon from './Icons/WindowsIcon';
+
 import './Taskbar.css';
 
 interface WindowState {

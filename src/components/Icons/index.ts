@@ -1,0 +1,14 @@
+export { default as BackIcon } from './BackIcon';
+export { default as BackgroundIcon } from './BackgroundIcon';
+export { default as CalculatorIcon } from './CalculatorIcon';
+export { default as CloseIcon } from './CloseIcon';
+export { default as FancyFolderIcon } from './FancyFolderIcon';
+export { default as FileExplorerIcon } from './FileExplorerIcon';
+export { default as FileIcon } from './FileIcon';
+export { default as FolderIcon } from './FolderIcon';
+export { default as MaximizeIcon } from './MaximizeIcon';
+export { default as MinimizeIcon } from './MinimizeIcon';
+export { default as RestoreIcon } from './RestoreIcon';
+export { default as SettingsIcon } from './SettingsIcon';
+export { default as TrashIcon } from './TrashIcon';
+export { default as WindowsIcon } from './WindowsIcon';

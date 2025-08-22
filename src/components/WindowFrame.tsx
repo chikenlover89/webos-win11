@@ -1,9 +1,6 @@
 import React, { useState } from 'react';
 
-import MaximizeIcon from './Icons/MaximizeIcon';
-import RestoreIcon from './Icons/RestoreIcon';
-import MinimizeIcon from './Icons/MinimizeIcon';
-import CloseIcon from './Icons/CloseIcon';
+import { MaximizeIcon, RestoreIcon, MinimizeIcon, CloseIcon } from './Icons';
 
 import './WindowFrame.css';
 
