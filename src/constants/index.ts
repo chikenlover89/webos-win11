@@ -29,9 +29,3 @@ export enum FILE_TYPES {
   FILE = 'file',
   APP = 'app',
 }
-
-export enum ICON_EMOJIS {
-  FILE_EXPLORER = '📁',
-  CALCULATOR = '🔢',
-  BACKGROUND = '🖼️',
-}

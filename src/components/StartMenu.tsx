@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 
-import { APPS, ICON_EMOJIS } from '../constants';
+import { APPS } from '../constants';
 
 import { FileExplorerIcon, CalculatorIcon, BackgroundIcon } from '../icons';
 
@@ -42,9 +42,9 @@ const StartMenu: React.FC<StartMenuProps> = ({ openApp, onClose }) => {
   }, [handleClose]);
 
   const apps = [
-    { name: APPS.FILE_EXPLORER, icon: ICON_EMOJIS.FILE_EXPLORER, action: () => openApp(APPS.FILE_EXPLORER) },
-    { name: APPS.CALCULATOR, icon: ICON_EMOJIS.CALCULATOR, action: () => openApp(APPS.CALCULATOR) },
-    { name: APPS.BACKGROUND, icon: ICON_EMOJIS.BACKGROUND, action: () => openApp(APPS.BACKGROUND) },
+    { name: APPS.FILE_EXPLORER, action: () => openApp(APPS.FILE_EXPLORER) },
+    { name: APPS.CALCULATOR, action: () => openApp(APPS.CALCULATOR) },
+    { name: APPS.BACKGROUND, action: () => openApp(APPS.BACKGROUND) },
   ];
 
   const handleAppClick = (app: typeof apps[0]) => {
