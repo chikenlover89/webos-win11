@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 
+import { APPS, DESKTOP_ITEMS, PATHS, FILE_TYPES } from '../constants';
+
 import { BackIcon, FolderIcon, FileIcon } from '../icons';
 
 import WindowFrame from './WindowFrame';
 
 import './FileExplorer.css';
-import path from 'path';
 
 interface FileExplorerProps {
   onClose: () => void;
@@ -23,22 +24,22 @@ interface FileItem {
   modified: string;
 }
 
-const FileExplorer: React.FC<FileExplorerProps> = ({ onClose, onMinimize, onMaximize, isMaximized, initialPath = 'C:\\Users\\Desktop', openApp }) => {
+const FileExplorer: React.FC<FileExplorerProps> = ({ onClose, onMinimize, onMaximize, isMaximized, initialPath = PATHS.DESKTOP, openApp }) => {
   const [currentPath, setCurrentPath] = useState(initialPath);
   
   const getFiles = (path: string): FileItem[] => {
-    if (path === 'C:\\Users\\Desktop') {
+    if (path === PATHS.DESKTOP) {
       return [
-        { name: 'Games', type: 'folder', modified: '8/19/2025 12:45 PM' },
-        { name: 'Calculator', type: 'file', size: '1.2 MB', modified: '8/19/2025 11:30 AM' },
-        { name: 'Background', type: 'file', size: '2.1 MB', modified: '8/19/2025 10:15 AM' },
-        { name: 'Recycle Bin', type: 'folder', modified: '8/19/2025 9:00 AM' },
+        { name: DESKTOP_ITEMS.GAMES, type: FILE_TYPES.FOLDER, modified: '8/19/2025 12:45 PM' },
+        { name: APPS.CALCULATOR, type: FILE_TYPES.FILE, size: '1.2 MB', modified: '8/19/2025 11:30 AM' },
+        { name: APPS.BACKGROUND, type: FILE_TYPES.FILE, size: '2.1 MB', modified: '8/19/2025 10:15 AM' },
+        { name: DESKTOP_ITEMS.RECYCLE_BIN, type: FILE_TYPES.FOLDER, modified: '8/19/2025 9:00 AM' },
       ];
-    } else if (path === 'C:\\Users\\Desktop\\Games') {
+    } else if (path === PATHS.DESKTOP_GAMES) {
       return [];
-    } else if (path === 'C:\\Users\\Desktop\\Recycle Bin') {
+    } else if (path === PATHS.DESKTOP_RECYCLE_BIN) {
       return [];
-    } else if (path === 'C:\\Users\\Pictures') {
+    } else if (path === PATHS.PICTURES) {
       return [];
     }
     
@@ -51,17 +52,17 @@ const FileExplorer: React.FC<FileExplorerProps> = ({ onClose, onMinimize, onMaxi
   const files = getFiles(currentPath);
 
   const handleItemDoubleClick = (item: FileItem) => {
-    if (item.type === 'folder') {
+    if (item.type === FILE_TYPES.FOLDER) {
       const newPath = `${currentPath}\\${item.name}`;
       setCurrentPath(newPath);
     } else if (item.type === 'file' && openApp) {
       // Handle app launching for desktop items
       switch (item.name) {
-        case 'Calculator':
-          openApp('Calculator');
+        case APPS.CALCULATOR:
+          openApp(APPS.CALCULATOR);
           break;
-        case 'Background':
-          openApp('Background');
+        case APPS.BACKGROUND:
+          openApp(APPS.BACKGROUND);
           break;
         default:
           break;
@@ -79,7 +80,7 @@ const FileExplorer: React.FC<FileExplorerProps> = ({ onClose, onMinimize, onMaxi
 
   return (
     <WindowFrame
-      title="File Explorer"
+      title={APPS.FILE_EXPLORER}
       onClose={onClose}
       onMinimize={onMinimize}
       onMaximize={onMaximize}
@@ -91,7 +92,7 @@ const FileExplorer: React.FC<FileExplorerProps> = ({ onClose, onMinimize, onMaxi
         <div className="explorer-toolbar">
           <button
             className="nav-button"
-            disabled={currentPath === 'C:\\Users'}
+            disabled={currentPath === PATHS.USERS}
             onClick={navigateUp}
           >
             <BackIcon size={16} />

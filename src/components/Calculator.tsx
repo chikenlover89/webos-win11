@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import WindowFrame from './WindowFrame';
+import { APPS } from '../constants';
 import './Calculator.css';
 
 interface CalculatorProps {
@@ -96,7 +97,7 @@ const Calculator: React.FC<CalculatorProps> = ({ onClose, onMinimize, onMaximize
 
   return (
     <WindowFrame
-      title="Calculator"
+      title={APPS.CALCULATOR}
       onClose={onClose}
       onMinimize={onMinimize}
       onMaximize={onMaximize}

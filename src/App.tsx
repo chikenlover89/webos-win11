@@ -1,8 +1,12 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
+
+import { APPS, PATHS } from './constants';
+
 import Desktop from './components/Desktop';
 import Taskbar from './components/Taskbar';
+
 import './App.css';
 
 const defaultBackground = 'https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=1920&h=1080&fit=crop';
@@ -16,15 +20,14 @@ function App() {
   const [backgroundImage, setBackgroundImage] = useState(defaultBackground);
   const [showStartMenu, setShowStartMenu] = useState(false);
   const [openApps, setOpenApps] = useState<string[]>([]);
-  const [fileExplorerPath, setFileExplorerPath] = useState('C:\\Users\\Desktop');
+  const [fileExplorerPath, setFileExplorerPath] = useState<string>(PATHS.DESKTOP);
   const [windowStates, setWindowStates] = useState<Record<string, WindowState>>({});
 
   const openApp = (appName: string, path?: string) => {
-    if (appName === 'File Explorer' && path) {
+    if (appName === APPS.FILE_EXPLORER && path) {
       setFileExplorerPath(path);
-    } else if (appName === 'File Explorer') {
-      // Reset to desktop when opened from start menu
-      setFileExplorerPath('C:\\Users\\Desktop');
+    } else if (appName === APPS.FILE_EXPLORER) {
+      setFileExplorerPath(PATHS.DESKTOP);
     }
     
     // If app is minimized, restore it instead of creating new instance

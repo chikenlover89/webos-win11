@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 
+import { APPS, ICON_EMOJIS } from '../constants';
+
 import { FileExplorerIcon, CalculatorIcon, BackgroundIcon } from '../icons';
 
 import './StartMenu.css';
@@ -40,9 +42,9 @@ const StartMenu: React.FC<StartMenuProps> = ({ openApp, onClose }) => {
   }, [handleClose]);
 
   const apps = [
-    { name: 'File Explorer', icon: '📁', action: () => openApp('File Explorer') },
-    { name: 'Calculator', icon: '🔢', action: () => openApp('Calculator') },
-    { name: 'Background', icon: '🖼️', action: () => openApp('Background') },
+    { name: APPS.FILE_EXPLORER, icon: ICON_EMOJIS.FILE_EXPLORER, action: () => openApp(APPS.FILE_EXPLORER) },
+    { name: APPS.CALCULATOR, icon: ICON_EMOJIS.CALCULATOR, action: () => openApp(APPS.CALCULATOR) },
+    { name: APPS.BACKGROUND, icon: ICON_EMOJIS.BACKGROUND, action: () => openApp(APPS.BACKGROUND) },
   ];
 
   const handleAppClick = (app: typeof apps[0]) => {
@@ -71,9 +73,9 @@ const StartMenu: React.FC<StartMenuProps> = ({ openApp, onClose }) => {
               onClick={() => handleAppClick(app)}
             >
               <div className="app-icon">
-                {app.name === 'File Explorer' && <FileExplorerIcon size={24} />}
-                {app.name === 'Calculator' && <CalculatorIcon size={24} />}
-                {app.name === 'Background' && <BackgroundIcon size={24} />}
+                {app.name === APPS.FILE_EXPLORER && <FileExplorerIcon size={24} />}
+                {app.name === APPS.CALCULATOR && <CalculatorIcon size={24} />}
+                {app.name === APPS.BACKGROUND && <BackgroundIcon size={24} />}
               </div>
               <span className="app-name">{app.name}</span>
             </button>

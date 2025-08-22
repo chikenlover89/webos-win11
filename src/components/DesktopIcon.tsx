@@ -1,6 +1,8 @@
 import React from 'react';
 import { useDrag, useDrop } from 'react-dnd';
 
+import { APPS } from '../constants';
+
 import { CalculatorIcon, TrashIcon, SettingsIcon, BackgroundIcon, FancyFolderIcon } from '../icons';
 
 import './DesktopIcon.css';
@@ -41,13 +43,13 @@ const DesktopIcon: React.FC<DesktopIconProps> = ({ id, type, name, position, ope
   const handleDoubleClick = () => {
     switch (id) {
       case 'games-folder':
-        openApp('File Explorer');
+        openApp(APPS.FILE_EXPLORER);
         break;
       case 'calculator':
-        openApp('Calculator');
+        openApp(APPS.CALCULATOR);
         break;
       case 'background-changer':
-        openApp('Background');
+        openApp(APPS.BACKGROUND);
         break;
       default:
         break;

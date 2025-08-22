@@ -1,9 +1,13 @@
 import React, { useState, useCallback } from 'react';
 import { useDrop } from 'react-dnd';
+
+import { APPS, DESKTOP_ITEMS, PATHS, FILE_TYPES } from '../constants';
+
 import DesktopIcon from './DesktopIcon';
 import FileExplorer from './FileExplorer';
 import Calculator from './Calculator';
 import BackgroundChanger from './BackgroundChanger';
+
 import './Desktop.css';
 
 interface WindowState {
@@ -35,9 +39,9 @@ const Desktop: React.FC<DesktopProps> = ({
   maximizeApp
 }) => {
   const [iconPositions, setIconPositions] = useState([
-    { id: 'games-folder', type: 'folder', name: 'Games', position: { x: 0, y: 0 } },
-    { id: 'calculator', type: 'app', name: 'Calculator', position: { x: 0, y: 1 } },
-    { id: 'background-changer', type: 'app', name: 'Background', position: { x: 0, y: 2 } }
+    { id: 'games-folder', type: FILE_TYPES.FOLDER, name: DESKTOP_ITEMS.GAMES, position: { x: 0, y: 0 } },
+    { id: 'calculator', type: FILE_TYPES.APP, name: APPS.CALCULATOR, position: { x: 0, y: 1 } },
+    { id: 'background-changer', type: FILE_TYPES.APP, name: APPS.BACKGROUND, position: { x: 0, y: 2 } }
   ]);
 
   const isPositionOccupied = useCallback((position: { x: number; y: number }, excludeId?: string) => {
@@ -138,7 +142,7 @@ const Desktop: React.FC<DesktopProps> = ({
             position={icon.position}
             openApp={(appName) => {
               if (icon.id === 'games-folder') {
-                openApp('File Explorer', 'C:\\Users\\Desktop\\Games');
+                openApp(APPS.FILE_EXPLORER, PATHS.DESKTOP_GAMES);
               } else {
                 openApp(appName);
               }
@@ -151,39 +155,39 @@ const Desktop: React.FC<DesktopProps> = ({
         <DesktopIcon
           id="recycle-bin"
           type="bin"
-          name="Recycle Bin"
+          name={DESKTOP_ITEMS.RECYCLE_BIN}
           position={{ x: 0, y: 0 }}
           openApp={openApp}
           onDelete={deleteIcon}
         />
       </div>
 
-      {openApps.includes('File Explorer') && !windowStates['File Explorer']?.isMinimized && (
+      {openApps.includes(APPS.FILE_EXPLORER) && !windowStates[APPS.FILE_EXPLORER]?.isMinimized && (
         <FileExplorer 
-          onClose={() => closeApp('File Explorer')} 
-          onMinimize={() => minimizeApp('File Explorer')}
-          onMaximize={() => maximizeApp('File Explorer')}
-          isMaximized={windowStates['File Explorer']?.isMaximized || false}
+          onClose={() => closeApp(APPS.FILE_EXPLORER)} 
+          onMinimize={() => minimizeApp(APPS.FILE_EXPLORER)}
+          onMaximize={() => maximizeApp(APPS.FILE_EXPLORER)}
+          isMaximized={windowStates[APPS.FILE_EXPLORER]?.isMaximized || false}
           initialPath={fileExplorerPath}
           openApp={openApp}
         />
       )}
       
-      {openApps.includes('Calculator') && !windowStates['Calculator']?.isMinimized && (
+      {openApps.includes(APPS.CALCULATOR) && !windowStates[APPS.CALCULATOR]?.isMinimized && (
         <Calculator 
-          onClose={() => closeApp('Calculator')}
-          onMinimize={() => minimizeApp('Calculator')}
-          onMaximize={() => maximizeApp('Calculator')}
-          isMaximized={windowStates['Calculator']?.isMaximized || false}
+          onClose={() => closeApp(APPS.CALCULATOR)}
+          onMinimize={() => minimizeApp(APPS.CALCULATOR)}
+          onMaximize={() => maximizeApp(APPS.CALCULATOR)}
+          isMaximized={windowStates[APPS.CALCULATOR]?.isMaximized || false}
         />
       )}
       
-      {openApps.includes('Background') && !windowStates['Background']?.isMinimized && (
+      {openApps.includes(APPS.BACKGROUND) && !windowStates[APPS.BACKGROUND]?.isMinimized && (
         <BackgroundChanger 
-          onClose={() => closeApp('Background')}
-          onMinimize={() => minimizeApp('Background')}
-          onMaximize={() => maximizeApp('Background')}
-          isMaximized={windowStates['Background']?.isMaximized || false}
+          onClose={() => closeApp(APPS.BACKGROUND)}
+          onMinimize={() => minimizeApp(APPS.BACKGROUND)}
+          onMaximize={() => maximizeApp(APPS.BACKGROUND)}
+          isMaximized={windowStates[APPS.BACKGROUND]?.isMaximized || false}
           setBackgroundImage={setBackgroundImage}
           currentBackground={backgroundImage}
         />
