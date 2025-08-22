@@ -2,6 +2,7 @@ export { default as BackIcon } from './BackIcon';
 export { default as BackgroundIcon } from './BackgroundIcon';
 export { default as CalculatorIcon } from './CalculatorIcon';
 export { default as CloseIcon } from './CloseIcon';
+export { default as ControllerIcon } from './ControllerIcon';
 export { default as FancyFolderIcon } from './FancyFolderIcon';
 export { default as FileExplorerIcon } from './FileExplorerIcon';
 export { default as FileIcon } from './FileIcon';

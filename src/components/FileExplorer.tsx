@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import { APPS, DESKTOP_ITEMS, PATHS, FILE_TYPES } from '../constants';
 
-import { BackIcon, FolderIcon, FileIcon } from '../icons';
+import { BackIcon, FolderIcon, FileIcon, ControllerIcon } from '../icons';
 
 import WindowFrame from './WindowFrame';
 
@@ -19,7 +19,7 @@ interface FileExplorerProps {
 
 interface FileItem {
   name: string;
-  type: 'folder' | 'file';
+  type: 'folder' | 'file' | 'game';
   size?: string;
   modified: string;
 }
@@ -36,7 +36,9 @@ const FileExplorer: React.FC<FileExplorerProps> = ({ onClose, onMinimize, onMaxi
         { name: DESKTOP_ITEMS.RECYCLE_BIN, type: FILE_TYPES.FOLDER, modified: '8/19/2025 9:00 AM' },
       ];
     } else if (path === PATHS.DESKTOP_GAMES) {
-      return [];
+      return [
+        { name: APPS.STONKS, type: FILE_TYPES.GAME, size: '25.3 MB', modified: '8/22/2025 2:00 PM' },
+      ];
     } else if (path === PATHS.DESKTOP_RECYCLE_BIN) {
       return [];
     } else if (path === PATHS.PICTURES) {
@@ -55,7 +57,7 @@ const FileExplorer: React.FC<FileExplorerProps> = ({ onClose, onMinimize, onMaxi
     if (item.type === FILE_TYPES.FOLDER) {
       const newPath = `${currentPath}\\${item.name}`;
       setCurrentPath(newPath);
-    } else if (item.type === 'file' && openApp) {
+    } else if ((item.type === FILE_TYPES.FILE || item.type === FILE_TYPES.GAME) && openApp) {
       // Handle app launching for desktop items
       switch (item.name) {
         case APPS.CALCULATOR:
@@ -63,6 +65,9 @@ const FileExplorer: React.FC<FileExplorerProps> = ({ onClose, onMinimize, onMaxi
           break;
         case APPS.BACKGROUND:
           openApp(APPS.BACKGROUND);
+          break;
+        case APPS.STONKS:
+          openApp(APPS.STONKS);
           break;
         default:
           break;
@@ -123,8 +128,10 @@ const FileExplorer: React.FC<FileExplorerProps> = ({ onClose, onMinimize, onMaxi
               >
                 <div className="file-info name">
                   <div className="file-icon">
-                    {file.type === 'folder' ? (
+                    {file.type === FILE_TYPES.FOLDER ? (
                       <FolderIcon size={16} />
+                    ) : file.type === FILE_TYPES.GAME ? (
+                      <ControllerIcon size={16} />
                     ) : (
                       <FileIcon size={16} />
                     )}

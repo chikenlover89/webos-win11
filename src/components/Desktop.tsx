@@ -7,6 +7,7 @@ import DesktopIcon from './DesktopIcon';
 import FileExplorer from './FileExplorer';
 import Calculator from './Calculator';
 import BackgroundChanger from './BackgroundChanger';
+import StonksGame from './StonksGame';
 
 import './Desktop.css';
 
@@ -190,6 +191,15 @@ const Desktop: React.FC<DesktopProps> = ({
           isMaximized={windowStates[APPS.BACKGROUND]?.isMaximized || false}
           setBackgroundImage={setBackgroundImage}
           currentBackground={backgroundImage}
+        />
+      )}
+      
+      {openApps.includes(APPS.STONKS) && !windowStates[APPS.STONKS]?.isMinimized && (
+        <StonksGame 
+          onClose={() => closeApp(APPS.STONKS)}
+          onMinimize={() => minimizeApp(APPS.STONKS)}
+          onMaximize={() => maximizeApp(APPS.STONKS)}
+          isMaximized={windowStates[APPS.STONKS]?.isMaximized || false}
         />
       )}
     </div>

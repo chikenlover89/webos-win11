@@ -2,6 +2,7 @@ export enum APPS {
   FILE_EXPLORER = 'File Explorer',
   CALCULATOR = 'Calculator',
   BACKGROUND = 'Background',
+  STONKS = 'Stonks',
 }
 
 export enum DESKTOP_ITEMS {
@@ -28,4 +29,5 @@ export enum FILE_TYPES {
   FOLDER = 'folder',
   FILE = 'file',
   APP = 'app',
+  GAME = 'game',
 }
