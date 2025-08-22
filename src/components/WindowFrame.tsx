@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { MaximizeIcon, RestoreIcon, MinimizeIcon, CloseIcon } from './Icons';
+import { MaximizeIcon, RestoreIcon, MinimizeIcon, CloseIcon } from '../icons';
 
 import './WindowFrame.css';
 
@@ -87,7 +87,7 @@ const WindowFrame: React.FC<WindowFrameProps> = ({
             onClick={onMaximize}
             title={isMaximized ? "Restore" : "Maximize"}
           >
-            {isMaximized ? <RestoreIcon size={12} /> : <MaximizeIcon size={12} />}
+            {isMaximized ? <RestoreIcon size={10} /> : <MaximizeIcon size={10} />}
           </button>
           <button className="window-control close" onClick={onClose} title="Close">
             <CloseIcon size={12} />

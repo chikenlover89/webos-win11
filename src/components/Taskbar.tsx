@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import { WindowsIcon } from './Icons';
+import { WindowsIcon } from '../icons';
 
 import StartMenu from './StartMenu';
 

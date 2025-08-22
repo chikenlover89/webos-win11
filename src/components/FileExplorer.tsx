@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 
-import { BackIcon, FolderIcon, FileIcon } from './Icons';
+import { BackIcon, FolderIcon, FileIcon } from '../icons';
 
 import WindowFrame from './WindowFrame';
 
 import './FileExplorer.css';
+import path from 'path';
 
 interface FileExplorerProps {
   onClose: () => void;
@@ -27,7 +28,6 @@ const FileExplorer: React.FC<FileExplorerProps> = ({ onClose, onMinimize, onMaxi
   
   const getFiles = (path: string): FileItem[] => {
     if (path === 'C:\\Users\\Desktop') {
-      // Desktop root - show desktop items
       return [
         { name: 'Games', type: 'folder', modified: '8/19/2025 12:45 PM' },
         { name: 'Calculator', type: 'file', size: '1.2 MB', modified: '8/19/2025 11:30 AM' },
@@ -35,16 +35,15 @@ const FileExplorer: React.FC<FileExplorerProps> = ({ onClose, onMinimize, onMaxi
         { name: 'Recycle Bin', type: 'folder', modified: '8/19/2025 9:00 AM' },
       ];
     } else if (path === 'C:\\Users\\Desktop\\Games') {
-      // Games folder - empty
       return [];
     } else if (path === 'C:\\Users\\Desktop\\Recycle Bin') {
-      // Recycle Bin - empty
+      return [];
+    } else if (path === 'C:\\Users\\Pictures') {
       return [];
     }
     
-    // Default fallback
     return [
-      { name: 'Documents', type: 'folder', modified: '8/19/2025 2:30 PM' },
+      { name: 'Desktop', type: 'folder', modified: '8/19/2025 2:30 PM' },
       { name: 'Pictures', type: 'folder', modified: '8/19/2025 1:15 PM' },
     ];
   };
@@ -90,7 +89,11 @@ const FileExplorer: React.FC<FileExplorerProps> = ({ onClose, onMinimize, onMaxi
     >
       <div className="file-explorer">
         <div className="explorer-toolbar">
-          <button className="nav-button" onClick={navigateUp}>
+          <button
+            className="nav-button"
+            disabled={currentPath === 'C:\\Users'}
+            onClick={navigateUp}
+          >
             <BackIcon size={16} />
           </button>
           <div className="address-bar">

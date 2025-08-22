@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 
-import { FileExplorerIcon, CalculatorIcon, BackgroundIcon } from './Icons';
+import { FileExplorerIcon, CalculatorIcon, BackgroundIcon } from '../icons';
 
 import './StartMenu.css';
 

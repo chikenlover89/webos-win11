@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDrag, useDrop } from 'react-dnd';
 
-import { CalculatorIcon, TrashIcon, SettingsIcon, BackgroundIcon, FancyFolderIcon } from './Icons';
+import { CalculatorIcon, TrashIcon, SettingsIcon, BackgroundIcon, FancyFolderIcon } from '../icons';
 
 import './DesktopIcon.css';
 
