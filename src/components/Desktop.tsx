@@ -56,13 +56,9 @@ const Desktop: React.FC<DesktopProps> = ({
   }, [iconPositions]);
 
   const findNearestFreePosition = useCallback((targetPosition: { x: number; y: number }, excludeId?: string) => {
-    // If target position is free, use it
     if (!isPositionOccupied(targetPosition, excludeId)) {
-      console.log('Target position is free:', targetPosition);
       return targetPosition;
     }
-
-    console.log('Target position occupied, searching for alternative:', targetPosition);
 
     // Search in expanding spiral pattern from target position
     const maxSearchRadius = 10;
@@ -78,7 +74,6 @@ const Desktop: React.FC<DesktopProps> = ({
           };
           
           if (!isPositionOccupied(candidatePosition, excludeId)) {
-            console.log('Found free position:', candidatePosition);
             return candidatePosition;
           }
         }
@@ -90,26 +85,22 @@ const Desktop: React.FC<DesktopProps> = ({
       for (let x = 0; x < 20; x++) {
         const position = { x, y };
         if (!isPositionOccupied(position, excludeId)) {
-          console.log('Fallback position found:', position);
           return position;
         }
       }
     }
 
-    console.log('No free position found, using target position as last resort');
-    return targetPosition; // Last resort
+    return targetPosition;
   }, [isPositionOccupied]);
 
   const moveIcon = useCallback((id: string, newPosition: { x: number; y: number }) => {
-    console.log('moveIcon called for', id, 'to position', newPosition);
     const finalPosition = findNearestFreePosition(newPosition, id);
-    console.log('Final position for', id, ':', finalPosition);
     
     setIconPositions(prev => {
       const newPositions = prev.map(icon => 
         icon.id === id ? { ...icon, position: finalPosition } : icon
       );
-      console.log('Updated positions:', newPositions);
+
       return newPositions;
     });
   }, [findNearestFreePosition]);
@@ -127,7 +118,6 @@ const Desktop: React.FC<DesktopProps> = ({
           x: Math.max(0, Math.round((item.gridPosition.x + delta.x) / 80)),
           y: Math.max(0, Math.round((item.gridPosition.y + delta.y) / 80))
         };
-        console.log('Attempting to move', item.id, 'to position', targetPosition);
         moveIcon(item.id, targetPosition);
       }
     },

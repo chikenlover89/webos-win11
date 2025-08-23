@@ -41,7 +41,6 @@ const Profile: React.FC<ProfileProps> = ({
         setProfileData(data);
       } catch (err) {
         setError('Could not load profile information');
-        console.error('Error loading profile data:', err);
       } finally {
         setLoading(false);
       }
