@@ -8,6 +8,7 @@ import FileExplorer from './FileExplorer';
 import Calculator from './Calculator';
 import BackgroundChanger from './BackgroundChanger';
 import StonksGame from './StonksGame';
+import Profile from './Profile';
 
 import './Desktop.css';
 
@@ -42,7 +43,8 @@ const Desktop: React.FC<DesktopProps> = ({
   const [iconPositions, setIconPositions] = useState([
     { id: 'games-folder', type: FILE_TYPES.FOLDER, name: DESKTOP_ITEMS.GAMES, position: { x: 0, y: 0 } },
     { id: 'calculator', type: FILE_TYPES.APP, name: APPS.CALCULATOR, position: { x: 0, y: 1 } },
-    { id: 'background-changer', type: FILE_TYPES.APP, name: APPS.BACKGROUND, position: { x: 0, y: 2 } }
+    { id: 'background-changer', type: FILE_TYPES.APP, name: APPS.BACKGROUND, position: { x: 0, y: 2 } },
+    { id: 'profile', type: FILE_TYPES.APP, name: APPS.PROFILE, position: { x: 0, y: 3 } }
   ]);
 
   const isPositionOccupied = useCallback((position: { x: number; y: number }, excludeId?: string) => {
@@ -200,6 +202,15 @@ const Desktop: React.FC<DesktopProps> = ({
           onMinimize={() => minimizeApp(APPS.STONKS)}
           onMaximize={() => maximizeApp(APPS.STONKS)}
           isMaximized={windowStates[APPS.STONKS]?.isMaximized || false}
+        />
+      )}
+      
+      {openApps.includes(APPS.PROFILE) && !windowStates[APPS.PROFILE]?.isMinimized && (
+        <Profile
+          onClose={() => closeApp(APPS.PROFILE)}
+          onMinimize={() => minimizeApp(APPS.PROFILE)}
+          onMaximize={() => maximizeApp(APPS.PROFILE)}
+          isMaximized={windowStates[APPS.PROFILE]?.isMaximized || false}
         />
       )}
     </div>

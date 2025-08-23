@@ -33,6 +33,7 @@ const FileExplorer: React.FC<FileExplorerProps> = ({ onClose, onMinimize, onMaxi
         { name: DESKTOP_ITEMS.GAMES, type: FILE_TYPES.FOLDER, modified: '8/19/2025 12:45 PM' },
         { name: APPS.CALCULATOR, type: FILE_TYPES.FILE, size: '1.2 MB', modified: '8/19/2025 11:30 AM' },
         { name: APPS.BACKGROUND, type: FILE_TYPES.FILE, size: '2.1 MB', modified: '8/19/2025 10:15 AM' },
+        { name: APPS.PROFILE, type: FILE_TYPES.FILE, size: '850 KB', modified: '8/23/2025 2:30 PM' },
         { name: DESKTOP_ITEMS.RECYCLE_BIN, type: FILE_TYPES.FOLDER, modified: '8/19/2025 9:00 AM' },
       ];
     } else if (path === PATHS.DESKTOP_GAMES) {
@@ -65,6 +66,9 @@ const FileExplorer: React.FC<FileExplorerProps> = ({ onClose, onMinimize, onMaxi
           break;
         case APPS.BACKGROUND:
           openApp(APPS.BACKGROUND);
+          break;
+        case APPS.PROFILE:
+          openApp(APPS.PROFILE);
           break;
         case APPS.STONKS:
           openApp(APPS.STONKS);

@@ -1,9 +1,9 @@
 import React from 'react';
 import { useDrag, useDrop } from 'react-dnd';
 
-import { APPS } from '../constants';
+import { APPS, FILE_TYPES } from '../constants';
 
-import { CalculatorIcon, TrashIcon, SettingsIcon, BackgroundIcon, FancyFolderIcon } from '../icons';
+import { CalculatorIcon, TrashIcon, SettingsIcon, BackgroundIcon, FancyFolderIcon, ProfileIcon } from '../icons';
 
 import './DesktopIcon.css';
 
@@ -51,6 +51,9 @@ const DesktopIcon: React.FC<DesktopIconProps> = ({ id, type, name, position, ope
       case 'background-changer':
         openApp(APPS.BACKGROUND);
         break;
+      case 'profile':
+        openApp(APPS.PROFILE);
+        break;
       default:
         break;
     }
@@ -58,11 +61,14 @@ const DesktopIcon: React.FC<DesktopIconProps> = ({ id, type, name, position, ope
 
   const getIconSvg = () => {
     switch (type) {
-      case 'folder':
+      case FILE_TYPES.FOLDER:
         return <FancyFolderIcon size={32} />;
-      case 'app':
+      case FILE_TYPES.APP:
         if (id === 'calculator') {
           return <CalculatorIcon size={32} />;
+        }
+        if (id === 'profile') {
+          return <ProfileIcon size={32} />;
         }
         return <BackgroundIcon size={32} />;
       case 'bin':

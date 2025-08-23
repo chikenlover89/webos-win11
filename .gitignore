@@ -24,3 +24,7 @@ yarn-error.log*
 
 # webgl :(
 /public/build/webgl
+
+# profile data
+public/profile-data.json
+public/profile-image.jpg

@@ -9,6 +9,7 @@ export { default as FileIcon } from './FileIcon';
 export { default as FolderIcon } from './FolderIcon';
 export { default as MaximizeIcon } from './MaximizeIcon';
 export { default as MinimizeIcon } from './MinimizeIcon';
+export { default as ProfileIcon } from './ProfileIcon';
 export { default as RestoreIcon } from './RestoreIcon';
 export { default as SettingsIcon } from './SettingsIcon';
 export { default as TrashIcon } from './TrashIcon';

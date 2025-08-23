@@ -3,6 +3,7 @@ export enum APPS {
   CALCULATOR = 'Calculator',
   BACKGROUND = 'Background',
   STONKS = 'Stonks',
+  PROFILE = 'Profile',
 }
 
 export enum DESKTOP_ITEMS {

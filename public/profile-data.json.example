@@ -1,0 +1,18 @@
+{
+  "name": "Your Name",
+  "surname": "Your Surname", 
+  "email": "your.email@example.com",
+  "linkedin": "https://www.linkedin.com/in/yourprofile",
+  "coreSkills": [
+    "JavaScript",
+    "TypeScript",
+    "React"
+  ],
+  "additionalSkills": [
+    "Node.js",
+    "Docker",
+    "AWS",
+    "PHP",
+    "Python"
+  ]
+}
