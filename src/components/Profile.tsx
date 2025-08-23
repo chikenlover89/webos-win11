@@ -95,8 +95,8 @@ const Profile: React.FC<ProfileProps> = ({
       onMinimize={onMinimize}
       onMaximize={onMaximize}
       isMaximized={isMaximized}
-      width={500}
-      height={500}
+      width={450}
+      height={530}
     >
       <div className="profile-window">
         <div className="profile-header">
