@@ -44,7 +44,7 @@ const StonksGame: React.FC<StonksGameProps> = ({
       onMinimize={onMinimize}
       onMaximize={onMaximize}
       isMaximized={isMaximized}
-      width={960}
+      width={900}
       height={540}
     >
       <div className="stonks-game">
