@@ -7,6 +7,7 @@ export { default as FancyFolderIcon } from './FancyFolderIcon';
 export { default as FileExplorerIcon } from './FileExplorerIcon';
 export { default as FileIcon } from './FileIcon';
 export { default as FolderIcon } from './FolderIcon';
+export { default as HexagonIcon } from './HexagonIcon';
 export { default as MaximizeIcon } from './MaximizeIcon';
 export { default as MinimizeIcon } from './MinimizeIcon';
 export { default as ProfileIcon } from './ProfileIcon';

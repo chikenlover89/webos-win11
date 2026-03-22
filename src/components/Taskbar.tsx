@@ -37,10 +37,10 @@ const Taskbar: React.FC<TaskbarProps> = ({
   }, []);
 
   const formatTime = (date: Date) => {
-    return date.toLocaleTimeString([], { 
-      hour: '2-digit', 
+    return date.toLocaleTimeString([], {
+      hour: '2-digit',
       minute: '2-digit',
-      hour12: true 
+      hour12: false
     });
   };
 

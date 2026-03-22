@@ -34,6 +34,7 @@ const FileExplorer: React.FC<FileExplorerProps> = ({ onClose, onMinimize, onMaxi
         { name: APPS.CALCULATOR, type: FILE_TYPES.FILE, size: '1.2 MB', modified: '8/19/2025 11:30 AM' },
         { name: APPS.BACKGROUND, type: FILE_TYPES.FILE, size: '2.1 MB', modified: '8/19/2025 10:15 AM' },
         { name: APPS.PROFILE, type: FILE_TYPES.FILE, size: '850 KB', modified: '8/23/2025 2:30 PM' },
+        { name: APPS.IMPERIUM, type: FILE_TYPES.FILE, size: '3.5 MB', modified: '3/22/2026 4:20 PM' },
         { name: DESKTOP_ITEMS.RECYCLE_BIN, type: FILE_TYPES.FOLDER, modified: '8/19/2025 9:00 AM' },
       ];
     } else if (path === PATHS.DESKTOP_GAMES) {
@@ -72,6 +73,9 @@ const FileExplorer: React.FC<FileExplorerProps> = ({ onClose, onMinimize, onMaxi
           break;
         case APPS.STONKS:
           openApp(APPS.STONKS);
+          break;
+        case APPS.IMPERIUM:
+          window.open('https://run.1mperium.app', '_blank');
           break;
         default:
           break;

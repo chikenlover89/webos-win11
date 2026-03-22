@@ -44,7 +44,8 @@ const Desktop: React.FC<DesktopProps> = ({
     { id: 'games-folder', type: FILE_TYPES.FOLDER, name: DESKTOP_ITEMS.GAMES, position: { x: 0, y: 0 } },
     { id: 'calculator', type: FILE_TYPES.APP, name: APPS.CALCULATOR, position: { x: 0, y: 1 } },
     { id: 'background-changer', type: FILE_TYPES.APP, name: APPS.BACKGROUND, position: { x: 0, y: 2 } },
-    { id: 'profile', type: FILE_TYPES.APP, name: APPS.PROFILE, position: { x: 0, y: 3 } }
+    { id: 'profile', type: FILE_TYPES.APP, name: APPS.PROFILE, position: { x: 0, y: 3 } },
+    { id: 'imperium', type: FILE_TYPES.APP, name: APPS.IMPERIUM, position: { x: 0, y: 4 } }
   ]);
 
   const isPositionOccupied = useCallback((position: { x: number; y: number }, excludeId?: string) => {

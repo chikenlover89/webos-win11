@@ -3,7 +3,7 @@ import { useDrag, useDrop } from 'react-dnd';
 
 import { APPS, FILE_TYPES } from '../constants';
 
-import { CalculatorIcon, TrashIcon, SettingsIcon, BackgroundIcon, FancyFolderIcon, ProfileIcon } from '../icons';
+import { CalculatorIcon, TrashIcon, SettingsIcon, BackgroundIcon, FancyFolderIcon, ProfileIcon, HexagonIcon } from '../icons';
 
 import './DesktopIcon.css';
 
@@ -54,6 +54,9 @@ const DesktopIcon: React.FC<DesktopIconProps> = ({ id, type, name, position, ope
       case 'profile':
         openApp(APPS.PROFILE);
         break;
+      case 'imperium':
+        window.open('https://run.1mperium.app', '_blank');
+        break;
       default:
         break;
     }
@@ -69,6 +72,9 @@ const DesktopIcon: React.FC<DesktopIconProps> = ({ id, type, name, position, ope
         }
         if (id === 'profile') {
           return <ProfileIcon size={32} />;
+        }
+        if (id === 'imperium') {
+          return <HexagonIcon size={32} />;
         }
         return <BackgroundIcon size={32} />;
       case 'bin':

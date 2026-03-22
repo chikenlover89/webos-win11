@@ -4,6 +4,7 @@ export enum APPS {
   BACKGROUND = 'Background',
   STONKS = 'Stonks',
   PROFILE = 'Profile',
+  IMPERIUM = 'Imperium',
 }
 
 export enum DESKTOP_ITEMS {
