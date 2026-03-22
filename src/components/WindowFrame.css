@@ -6,11 +6,27 @@
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
   z-index: 100;
   overflow: hidden;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .window-frame.maximized {
   border-radius: 0;
   border: none;
+}
+
+.window-frame.minimizing {
+  animation: minimize-to-taskbar 0.1s cubic-bezier(0.4, 0, 1, 1) forwards;
+}
+
+@keyframes minimize-to-taskbar {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.1) translateY(100vh);
+  }
 }
 
 .window-titlebar {

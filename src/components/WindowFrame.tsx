@@ -15,19 +15,20 @@ interface WindowFrameProps {
   children: React.ReactNode;
 }
 
-const WindowFrame: React.FC<WindowFrameProps> = ({ 
-  title, 
-  onClose, 
+const WindowFrame: React.FC<WindowFrameProps> = ({
+  title,
+  onClose,
   onMinimize,
   onMaximize,
-  width = 400, 
+  width = 400,
   height = 300,
   isMaximized = false,
-  children 
+  children
 }) => {
   const [position, setPosition] = useState({ x: 100, y: 100 });
   const [isDragging, setIsDragging] = useState(false);
   const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
+  const [isMinimizing, setIsMinimizing] = useState(false);
 
   const handleMouseDown = (e: React.MouseEvent) => {
     setIsDragging(true);
@@ -50,6 +51,16 @@ const WindowFrame: React.FC<WindowFrameProps> = ({
     setIsDragging(false);
   };
 
+  const handleMinimize = () => {
+    if (onMinimize) {
+      setIsMinimizing(true);
+      setTimeout(() => {
+        onMinimize();
+        setIsMinimizing(false);
+      }, 100);
+    }
+  };
+
   const windowStyle = isMaximized ? {
     left: 0,
     top: 0,
@@ -64,7 +75,7 @@ const WindowFrame: React.FC<WindowFrameProps> = ({
 
   return (
     <div
-      className={`window-frame ${isMaximized ? 'maximized' : ''}`}
+      className={`window-frame ${isMaximized ? 'maximized' : ''} ${isMinimizing ? 'minimizing' : ''}`}
       style={windowStyle}
       onMouseMove={handleMouseMove}
       onMouseUp={handleMouseUp}
@@ -75,9 +86,9 @@ const WindowFrame: React.FC<WindowFrameProps> = ({
       >
         <div className="window-title">{title}</div>
         <div className="window-controls">
-          <button 
-            className="window-control minimize" 
-            onClick={onMinimize}
+          <button
+            className="window-control minimize"
+            onClick={handleMinimize}
             title="Minimize"
           >
             <MinimizeIcon size={12} />
