@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { MaximizeIcon, RestoreIcon, MinimizeIcon, CloseIcon } from '../icons';
 
@@ -30,25 +30,37 @@ const WindowFrame: React.FC<WindowFrameProps> = ({
   const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
   const [isMinimizing, setIsMinimizing] = useState(false);
 
+  useEffect(() => {
+    const handleGlobalMouseMove = (e: MouseEvent) => {
+      if (isDragging) {
+        setPosition({
+          x: e.clientX - dragStart.x,
+          y: e.clientY - dragStart.y
+        });
+      }
+    };
+
+    const handleGlobalMouseUp = () => {
+      setIsDragging(false);
+    };
+
+    if (isDragging) {
+      document.addEventListener('mousemove', handleGlobalMouseMove);
+      document.addEventListener('mouseup', handleGlobalMouseUp);
+    }
+
+    return () => {
+      document.removeEventListener('mousemove', handleGlobalMouseMove);
+      document.removeEventListener('mouseup', handleGlobalMouseUp);
+    };
+  }, [isDragging, dragStart]);
+
   const handleMouseDown = (e: React.MouseEvent) => {
     setIsDragging(true);
     setDragStart({
       x: e.clientX - position.x,
       y: e.clientY - position.y
     });
-  };
-
-  const handleMouseMove = (e: React.MouseEvent) => {
-    if (isDragging) {
-      setPosition({
-        x: e.clientX - dragStart.x,
-        y: e.clientY - dragStart.y
-      });
-    }
-  };
-
-  const handleMouseUp = () => {
-    setIsDragging(false);
   };
 
   const handleMinimize = () => {
@@ -77,10 +89,8 @@ const WindowFrame: React.FC<WindowFrameProps> = ({
     <div
       className={`window-frame ${isMaximized ? 'maximized' : ''} ${isMinimizing ? 'minimizing' : ''}`}
       style={windowStyle}
-      onMouseMove={handleMouseMove}
-      onMouseUp={handleMouseUp}
     >
-      <div 
+      <div
         className="window-titlebar"
         onMouseDown={handleMouseDown}
       >
