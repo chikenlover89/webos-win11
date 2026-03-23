@@ -81,3 +81,14 @@
   height: calc(100% - 32px);
   overflow: hidden;
 }
+
+@media (max-width: 768px) {
+  .window-frame {
+    left: 0 !important;
+    top: 0 !important;
+    width: 100vw !important;
+    height: calc(100vh - 48px) !important;
+    border-radius: 0 !important;
+    border: none !important;
+  }
+}
